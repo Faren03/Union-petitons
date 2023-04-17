@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+
+</head>
+<body>
+  <h1>Petition Page </h1>
+   </style>
+</head>
+<body>
+    <form id="petitionForm">
+    <label for="titleInput">Title:</label>
+    <input type="text" id="titleInput" required>
+    <button type="submit">Search</button>
+  </form>
+  <div id="petitionList"></div>
+
+  <script>
+    var petitions = []; // Data structure to hold petitions
+
+    // Form submit event listener
+    document.getElementById('petitionForm').addEventListener('submit', function(event) {
+      event.preventDefault(); // Prevent form submission
+
+      // Get form data
+      var title = document.getElementById('titleInput').value;
+
+      // Create a new petition object
+      var petition = {
+        id: petitions.length + 1,
+        title: title,
+        signatures: 0 // Initialize signatures to 0
+      };
+
+      // Add the petition to the data structure
+      petitions.push(petition);
+
+      // Render the petitions on the page
+      renderPetitions();
+
+      // Clear the form
+      document.getElementById('petitionForm').reset();
+    });
+
+    // Render petitions in the list
+    function renderPetitions() {
+      var petitionList = document.getElementById('petitionList'); // Get the petition list element
+      petitionList.innerHTML = ''; // Clear existing content
+
+      // Loop through the petitions and create HTML elements for each petition
+      for (var i = 0; i < petitions.length; i++) {
+        var petition = petitions[i];
+        var cardContainer = document.createElement('div'); // Create a card container for each petition
+        cardContainer.classList.add('card');
+        var cardInner = document.createElement('div'); // Create a card inner element
+        cardInner.classList.add('card-inner');
+
+        // Create front of the card
+        var cardFront = document.createElement('div');
+        cardFront.classList.add('card-front');
+        cardFront.textContent = 'ID: ' + petition.id + ' - Title: ' + petition.title;
+        cardInner.appendChild(cardFront);
+
+        // Create back of the card
+        var cardBack = document.createElement('div');
+        cardBack.classList.add('card-back');
+        cardBack.textContent = 'Signatures: ' + petition.signatures;
+        cardInner.appendChild(cardBack);
+
+        cardContainer.appendChild(card)
