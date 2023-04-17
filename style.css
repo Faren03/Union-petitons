@@ -1,0 +1,46 @@
+body {
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+}
+
+form {
+  margin: 20px auto;
+  width: 50%;
+  padding: 20px; /* Added padding to create space inside the form */
+  border: 1px solid #000; /* Added border for the form */
+  border-radius: 0; /* Set border radius to 0 to create a square box */
+}
+
+label, input, textarea {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input[type="submit"] {
+  margin-top: 10px;
+}
+
+#petitionList {
+  margin: 20px auto;
+  width: 50%;
+}
+
+#petitionList {
+  margin: 20px auto;
+  width: 50%;
+}
+
+.petition-item {
+  border: 1px solid #000;
+  padding: 10px;
+  transition: transform 0.3s ease-in-out; /* Add transition for transform property */
+}
+
+
+.petition-item {
+  position: relative; /* Add relative positioning to make the tracker positioned relative to this element */
+}
+
