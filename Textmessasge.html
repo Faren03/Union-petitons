@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Story Sharing</title>
+  <style>
+    /* Define the container for the stories and replies */
+    .story-container {
+      width: 600px;
+      margin: 0 auto;
+      padding: 10px;
+    }
+
+    /* Define the story and reply boxes */
+    .story-box, .reply-box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    /* Define the input area for stories and replies */
+    .story-input, .reply-input {
+      width: 100%;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    /* Define the submit button for stories and replies */
+    .story-submit, .reply-submit {
+      padding: 5px 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Story Sharing</h1>
+  <div class="story-container">
+    <h2>Share Your Story</h2>
+    <div class="story-box">
+      <textarea class="story-input" id="storyInput" rows="4" placeholder="Share your story..."></textarea>
+      <br>
+      <button class="story-submit" type="button" id="storySubmit">Submit</button>
+    </div>
+
+    <h2>Replies</h2>
+    <div id="repliesContainer"></div>
+  </div>
+
+  <script>
+    var storyInput = document.getElementById('storyInput');
+    var storySubmit = document.getElementById('storySubmit');
+    var repliesContainer = document.getElementById('repliesContainer');
+
+    // Add event listener to the story submit button
+    storySubmit.addEventListener('click', function() {
+      var story = storyInput.value;
+      if (story) {
+        addStory(story);
+        storyInput.value = '';
+      }
+    });
+
+    // Function to add a story to the story container
+    function addStory(story) {
+      var storyBox = document.createElement('div');
+      storyBox.className = 'story-box';
+      var storyText = document.createElement('div');
+      storyText.textContent = story;
+      var replyInput = document.createElement('textarea');
+      replyInput.className = 'reply-input';
+      replyInput.placeholder = 'Reply to this story...';
+      var replySubmit = document.createElement('button');
+      replySubmit.className = 'reply-submit';
+      replySubmit.textContent = 'Submit';
+      replySubmit.addEventListener('click', function() {
+        var reply = replyInput.value;
+        if (reply) {
+          addReply(storyBox, reply);
+          replyInput.value = '';
+        }
+      });
+
+      storyBox.appendChild(storyText);
+      storyBox.appendChild(replyInput);
+      storyBox.appendChild(replySubmit);
+      repliesContainer.appendChild(storyBox);
+    }
+
+    // Function to add a reply to a story
+    function addReply(storyBox, reply) {
+      var replyBox = document.createElement('div');
+      replyBox.className = 'reply-box';
+      var replyText = document.createElement('div');
+      replyText.textContent = reply;
+      replyBox.appendChild(replyText);
+      storyBox.appendChild(replyBox);
+    }
+  </script>
+</body>
+</html>
